@@ -8,7 +8,7 @@ class CarSerializer(serializers.Serializer):
     model = serializers.CharField(required=True, max_length=64)
     manufacturer = serializers.CharField(required=True, max_length=64)
     horse_power = serializers.IntegerField(
-        required=True, min_value=1, max_value=1914
+        min_value=1, max_value=1914
     )
     is_broken = serializers.BooleanField()
     problem_description = serializers.CharField(
