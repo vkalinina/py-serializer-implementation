@@ -21,7 +21,20 @@ class CarSerializer(serializers.Serializer):
         return Car.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
+        instance.model = validated_data.get(
+            "model", instance.model
+        )
+        instance.manufacturer = validated_data.get(
+            "manufacturer", instance.manufacturer
+        )
+        instance.horse_power = validated_data.get(
+            "horse_power", instance.horse_power
+        )
+        instance.is_broken = validated_data.get(
+            "is_broken", instance.is_broken
+        )
+        instance.problem_description = validated_data.get(
+            "problem_description", instance.problem_description
+        )
         instance.save()
         return instance
