@@ -7,7 +7,7 @@ class CarSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     model = serializers.CharField(required=True, max_length=64)
     manufacturer = serializers.CharField(required=True, max_length=64)
-    horse_power = serializers.IntegerField(
+    horse_powers = serializers.IntegerField(
         min_value=1, max_value=1914
     )
     is_broken = serializers.BooleanField()
@@ -27,8 +27,8 @@ class CarSerializer(serializers.Serializer):
         instance.manufacturer = validated_data.get(
             "manufacturer", instance.manufacturer
         )
-        instance.horse_power = validated_data.get(
-            "horse_power", instance.horse_power
+        instance.horse_powers = validated_data.get(
+            "horse_powers", instance.horse_powers
         )
         instance.is_broken = validated_data.get(
             "is_broken", instance.is_broken
